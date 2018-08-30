@@ -14,9 +14,9 @@ object  example extends App {
   trip2.count//1342
 
 
-  def lireT(input: String): RDD[(Long, Long, Int)] = {
-    return sc.textFile(input).
-      map(l => l.substring(1, line.length -1).split(",")).
+  def lireT(file: String): RDD[(Long, Long, Int)] = {
+    return sc.textFile(file).
+      map(l => l.substring(1, l.length -1).split(",")).
       map(t => (t(0).toLong, t(1).toLong, (t(0).toInt)))
   }
 
@@ -25,11 +25,13 @@ object  example extends App {
 
     triples.count
 
-  def filterPropreties(input: RDD[(Long, Long, Int)], prop: Long): RDD[(Long, Long, Int)] = {
-    return input.filter(x => x._2 == prop).map{ case (s,p,o,f) => (s,o,f)}
+  def filterPropreties(file: RDD[(Long, Long, Int)], prop: Long): RDD[(Long, Long, Int)] = {
+    return file.filter(x => x._2 == prop).map{ case (s,p,o,f) => (s,o,f)}
   }
 
-
+  val TripOwl = filterProperties(triples)
+  
+  
 
   val l = trip2.map(x=>x.length()).reduce((a,b)=>a.max(b))//145
 
