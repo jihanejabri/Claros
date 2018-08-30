@@ -26,7 +26,6 @@ object  example extends App {
     triples.count
 
   def filterPropreties(input: RDD[(Long, Long, Int)], prop: Long): RDD[(Long, Long, Int)] = {
-    x
     return input.filter(x => x._2 == prop).map{ case (s,p,o,f) => (s,o,f)}
   }
 
