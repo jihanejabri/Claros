@@ -1,0 +1,7 @@
+@PREFIX owl: <http://www.w3.org/2002/07/owl#> .
+{
+  ?OWL_sameAs owl ?X_sameAs .
+  ?OWL_sameAs ?P ?V .
+} => {
+  ?OWL_sameAS ?P ?V .
+} .
